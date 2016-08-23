@@ -21,7 +21,7 @@ MIT License - https://github.com/MightyMedia/Simple-Social-Share/blob/master/LIC
 To use Simple Social Share make sure you have jQuery 1.7 or newer. Next, just include the plugin file and you are ready to go.
 
 ```html
-<script type="text/javascript" src="jquery.mfs.min.js"></script>
+<script type="text/javascript" src="jquery.simpleSocialShare.min.js"></script>
 ```
 
 ## Basic usage
