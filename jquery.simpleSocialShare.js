@@ -10,11 +10,11 @@ if (typeof Object.create !== 'function') {
 /*!
  * Simple Social Share for jQuery
  *
- * Simple Social Share for jQuery is a simple way of creating social share buttons on your website.
+ * Simple Social Share for jQuery is a simple way of creating social share buttons on your website without loading all the third party scripts from these networks.
  *
  * Based on a blog by Jonathan Suh: https://jonsuh.com/blog/social-share-links/
  *
- * Version 0.1.0
+ * Version 0.1.1
  * Licensed under the MIT License: https://github.com/MightyMedia/Simple-Social-Share/blob/master/LICENSE
  *
  * Requires:
@@ -60,6 +60,7 @@ if (typeof Object.create !== 'function') {
 		bind: function() {
 
 			var self = this;
+
 			// Do your binds
 			self.bindProxied(self.$element, 'click', self.openSocialSharePopup);
 
@@ -90,13 +91,13 @@ if (typeof Object.create !== 'function') {
 			var self			= this;
 
 			var doShare 		= false;
-			var shareUrl		= self.$element.data('shareUrl');
-			var shareNetwork	= self.$element.data('shareNetwork');
-			var shareText		= self.$element.data('shareText');
-			var shareTitle		= self.$element.data('shareTitle');
-			var shareVia		= self.$element.data('shareVia');
-			var shareTags		= self.$element.data('shareTags');
-			var shareMedia		= self.$element.data('shareMedia');
+			var shareUrl		= self.$element.data('share-url');
+			var shareNetwork	= self.$element.data('share-network');
+			var shareText		= self.$element.data('share-text');
+			var shareTitle		= self.$element.data('share-title');
+			var shareVia		= self.$element.data('share-via');
+			var shareTags		= self.$element.data('share-tags');
+			var shareMedia		= self.$element.data('share-media');
 			var networkShareUrl	= '';
 
 			// Check if shareUrl and shareNetwork are present and shareNetwork is in the list of allowed networks
@@ -183,18 +184,14 @@ if (typeof Object.create !== 'function') {
 					default:
 
 						return false;
-						break;
 
 				}
 
 			}
 
-
 			if (doShare) {
 
-				// Calculate the position of the popup so
-				// it’s centered on the screen.
-
+				// Calculate the position of the popup so it’s centered on the screen.
 				self.popupwindow(networkShareUrl, '', 500, 300);
 
 			}
@@ -261,8 +258,10 @@ if (typeof Object.create !== 'function') {
 
 	};
 
+/*
 	$.fn[pluginName].options = {
 		key: 'value'
 	};
+*/
 
 })(jQuery, window, document);
