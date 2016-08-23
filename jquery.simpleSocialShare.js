@@ -6,10 +6,13 @@ if (typeof Object.create !== 'function') {
 		return new F();
 	};
 }
+
 /*!
- * Simple Social Share jQuery
+ * Simple Social Share for jQuery
  *
  * Simple Social Share for jQuery is a simple way of creating social share buttons on your website.
+ *
+ * Based on a blog by Jonathan Suh: https://jonsuh.com/blog/social-share-links/
  *
  * Version 0.1.0
  * Licensed under the MIT License: https://github.com/MightyMedia/Simple-Social-Share/blob/master/LICENSE
@@ -44,7 +47,7 @@ if (typeof Object.create !== 'function') {
 			self.$element = $(element);
 
 			// Init your plugin stuff here
-			self.exampleVariable = 0;
+			self.allowedNetworks = ['facebook','twitter','linkedin','googleplus', 'pinterest', 'reddit'];
 
 			// Bind events after intialisation
 			self.bind();
@@ -58,7 +61,7 @@ if (typeof Object.create !== 'function') {
 
 			var self = this;
 			// Do your binds
-			self.bindProxied(self.$element, 'click', self.exampleMethod);
+			self.bindProxied(self.$element, 'click', self.openSocialSharePopup);
 
 		},
 
@@ -81,12 +84,129 @@ if (typeof Object.create !== 'function') {
 
 		},
 
-		exampleMethod: function(e) {
+		openSocialSharePopup: function(e) {
 
-			var self = this;
-			// Do some magic!
-			self.exampleVariable++;
-			console.log('Clicked ' + self.exampleVariable + ' times!');
+			e.preventDefault();
+			var self			= this;
+
+			var doShare 		= false;
+			var shareUrl		= self.$element.data('shareUrl');
+			var shareNetwork	= self.$element.data('shareNetwork');
+			var shareText		= self.$element.data('shareText');
+			var shareTitle		= self.$element.data('shareTitle');
+			var shareVia		= self.$element.data('shareVia');
+			var shareTags		= self.$element.data('shareTags');
+			var shareMedia		= self.$element.data('shareMedia');
+			var networkShareUrl	= '';
+
+			// Check if shareUrl and shareNetwork are present and shareNetwork is in the list of allowed networks
+			if (typeof shareUrl !== 'undefined' && typeof shareNetwork !== 'undefined' && self.allowedNetworks.indexOf(shareNetwork) > -1) {
+
+				// At this point we don't automaticly fetch the current URL from the browser
+				doShare = true;
+
+			}
+
+			if (doShare === true) {
+
+				switch(shareNetwork) {
+
+					case 'facebook':
+
+						networkShareUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(shareUrl);
+
+						break;
+
+
+					case 'googleplus':
+
+						networkShareUrl = 'https://plus.google.com/share?url=' + encodeURIComponent(shareUrl);
+
+						break;
+
+
+					case 'linkedin':
+
+						networkShareUrl = 'https://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(shareUrl) + '&source=' + encodeURIComponent(shareUrl);
+
+						if (typeof shareTitle !== 'undefined' &&  shareTitle !== '') {
+							networkShareUrl += '&title=' + encodeURIComponent(shareTitle);
+						}
+						if (typeof shareText !== 'undefined' && shareText !== '') {
+							networkShareUrl +=  '&summary=' + encodeURIComponent(shareText);
+						}
+
+						break;
+
+
+					case 'pinterest':
+
+						networkShareUrl = 'https://www.pinterest.com/pin/create/button/?url=' + encodeURIComponent(shareUrl);
+
+						if (typeof shareMedia !== 'undefined' && shareMedia !== '') {
+							networkShareUrl += '&media=' + encodeURIComponent(shareMedia);
+						}
+						if (typeof shareText !== 'undefined' && shareText !== '') {
+							networkShareUrl += '&description=' + encodeURIComponent(shareText);
+						}
+						if (typeof shareTags !== 'undefined' && shareTags !== '') {
+							networkShareUrl += '&hashtags=' + shareTags;
+						}
+
+						break;
+
+
+					case 'reddit':
+
+						networkShareUrl = 'http://www.reddit.com/submit/?url=' + encodeURIComponent(shareUrl);
+
+						break;
+
+
+					case 'twitter':
+
+						networkShareUrl = 'https://twitter.com/intent/tweet?&url=' + encodeURIComponent(shareUrl);
+
+						if (typeof shareText !== 'undefined' && shareText !== '') {
+							networkShareUrl += '&text=' + encodeURIComponent(shareText);
+						}
+						if (typeof shareVia !== 'undefined' && shareVia !== '') {
+							networkShareUrl += '&via=' + encodeURIComponent(shareVia);
+						}
+						if (typeof shareTags !== 'undefined' && shareTags !== '') {
+							networkShareUrl += '&hashtags=' + shareTags;
+						}
+
+						break;
+
+
+					default:
+
+						return false;
+						break;
+
+				}
+
+			}
+
+
+			if (doShare) {
+
+				// Calculate the position of the popup so
+				// it’s centered on the screen.
+
+				self.popupwindow(networkShareUrl, '', 500, 300);
+
+			}
+
+		},
+
+		popupwindow: function(url, title, w, h) {
+
+			var left = (screen.width/2)-(w/2);
+			var top = (screen.height/2)-(h/2);
+
+			return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
 
 		}
 
@@ -115,13 +235,13 @@ if (typeof Object.create !== 'function') {
 
 				} else {
 
-					$.error('Plugin is already initialized for this object.');
+					$.error('Simple Social Share is already initialized for this object.');
 					return;
 
 				}
 			} else if (!pluginInstance) {
 
-				$.error('Plugin is not initialized for this object yet.');
+				$.error('Simple Social Share is not initialized for this object yet.');
 				return;
 
 			} else if (pluginInstance[options]) {
