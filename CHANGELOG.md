@@ -1,5 +1,10 @@
 # Changelog# Changelog
 
+## Unreleased
+
+* Updated documentation
+* Fixed some typos
+
 ## 0.1.1 / 2016-08-23
 
 * Added documentation
