@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Simple-social-share by MightyMedia</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Simple-social-share</h1>
+      <h2 class="project-tagline">Simple Social Share for jQuery is a simple way of creating social share buttons on your website.</h2>
+      <a href="https://github.com/MightyMedia/Simple-Social-Share" class="btn">View on GitHub</a>
+      <a href="https://github.com/MightyMedia/Simple-Social-Share/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/MightyMedia/Simple-Social-Share/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="simple-social-share-for-jquery" class="anchor" href="#simple-social-share-for-jquery" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Simple Social Share for jQuery</h1>
+
+<p><a href="https://travis-ci.org/MightyMedia/Simple-Social-Share"><img src="https://travis-ci.org/MightyMedia/Simple-Social-Share.svg?branch=develop" alt="Build Status"></a></p>
+
+<p>Simple Social Share for jQuery is a simple way of creating social share buttons on your website without loading all the third party scripts from these networks. It is bases on a blog by Jonathan Suh: <a href="https://jonsuh.com/blog/social-share-links/">Responsible Social Share Links</a>.</p>
+
+<p>Version 0.1.1</p>
+
+<p>For changelog see: <a href="https://github.com/MightyMedia/Simple-Social-Share/blob/master/CHANGELOG.md">https://github.com/MightyMedia/Simple-Social-Share/blob/master/CHANGELOG.md</a></p>
+
+<p>Requires jQuery 1.7 or newer.</p>
+
+<p>Licensed under:
+MIT License - <a href="https://github.com/MightyMedia/Simple-Social-Share/blob/master/LICENSE">https://github.com/MightyMedia/Simple-Social-Share/blob/master/LICENSE</a></p>
+
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Requirements</h2>
+
+<ul>
+<li>jQuery 1.7+</li>
+</ul>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>To use Simple Social Share make sure you have jQuery 1.7 or newer. Next, just include the plugin file and you are ready to go.</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>jquery.simpleSocialShare.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
+
+<h2>
+<a id="basic-usage" class="anchor" href="#basic-usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Basic usage</h2>
+
+<h3>
+<a id="initialize" class="anchor" href="#initialize" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Initialize</h3>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">$</span>(<span class="pl-c1">document</span>).<span class="pl-en">ready</span>(<span class="pl-k">function</span>(){
+    <span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>.socialShareBtn<span class="pl-pds">'</span></span>).<span class="pl-en">simpleSocialShare</span>();
+});</pre></div>
+
+<p>Now every element with the class <code>socialShareBtn</code> will turn in to a functional share link.</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">a</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>#<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>socialShareBtn<span class="pl-pds">"</span></span> <span class="pl-e">data-share-url</span>=<span class="pl-s"><span class="pl-pds">"</span>http://mightymedia.nl<span class="pl-pds">"</span></span> <span class="pl-e">data-share-network</span>=<span class="pl-s"><span class="pl-pds">"</span>twitter<span class="pl-pds">"</span></span> <span class="pl-e">data-share-text</span>=<span class="pl-s"><span class="pl-pds">"</span>Share this awesome link on Twitter<span class="pl-pds">"</span></span>&gt;Share on Twitter&lt;/<span class="pl-ent">a</span>&gt;</pre></div>
+
+<h2>
+<a id="options" class="anchor" href="#options" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Options</h2>
+
+<p>The options for a share link/button are set via data attributes on the element. Below is a list with the options.</p>
+
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+<th>Network</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>share-network</td>
+<td>The network to share on</td>
+<td>all networks</td>
+<td>required</td>
+</tr>
+<tr>
+<td>share-url</td>
+<td>The URL to be shared</td>
+<td>all networks</td>
+<td>required</td>
+</tr>
+<tr>
+<td>share-text</td>
+<td>The text to pass along with the URL</td>
+<td>linkedin, pinterest, twitter</td>
+<td>optional</td>
+</tr>
+<tr>
+<td>share-title</td>
+<td>The title to add the the share</td>
+<td>linkedin only</td>
+<td>optional</td>
+</tr>
+<tr>
+<td>share-via</td>
+<td>Account name to mention in the share/tweet</td>
+<td>twitter only</td>
+<td>optional</td>
+</tr>
+<tr>
+<td>share-tags</td>
+<td>Tags to include to the share</td>
+<td>pinterest, twitter</td>
+<td>optional</td>
+</tr>
+<tr>
+<td>share-media</td>
+<td>Image to add to the share</td>
+<td>pinterest only</td>
+<td>optional</td>
+</tr>
+</tbody>
+</table>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/MightyMedia/Simple-Social-Share">Simple-social-share</a> is maintained by <a href="https://github.com/MightyMedia">MightyMedia</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
