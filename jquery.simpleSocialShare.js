@@ -14,7 +14,7 @@ if (typeof Object.create !== 'function') {
  *
  * Based on a blog by Jonathan Suh: https://jonsuh.com/blog/social-share-links/
  *
- * Version 0.1.1
+ * Version 0.1.2
  * Licensed under the MIT License: https://github.com/MightyMedia/Simple-Social-Share/blob/master/LICENSE
  *
  * Requires:

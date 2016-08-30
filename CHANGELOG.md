@@ -1,4 +1,10 @@
-# Changelog# Changelog
+# Changelog
+
+## 0.1.2 / 2016-08-30
+
+* Updated documentation
+* Fixed some typos
+* Added package.json for NPM
 
 ## 0.1.1 / 2016-08-23
 

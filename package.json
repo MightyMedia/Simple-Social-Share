@@ -1,0 +1,36 @@
+{
+  "name": "jquery-social-share",
+  "title": "Simple Social Share for jQuery",
+  "description": "Simple Social Share for jQuery is a simple way of creating social share buttons on your website without loading all the third party scripts from these networks.",
+  "keywords": [
+    "ecosystem:jquery",
+    "jquery-plugin",
+    "social",
+    "share"
+  ],
+  "version": "0.1.2",
+  "author": {
+    "name": "Bas van den Wijngaard",
+    "email": "bas@mightymedia.nl",
+    "url": "http://mightymedia.nl/"
+  },
+  "maintainers": [
+    {
+      "name": "Bas van den Wijngaard",
+      "email": "bas@mightymedia.nl",
+      "url": "http://mightymedia.nl/"
+    }
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/MightyMedia/Simple-Social-Share/blob/master/LICENSE"
+    }
+  ],
+  "homepage": "https://mightymedia.github.io/Simple-Social-Share/",
+  "bugs": "https://github.com/MightyMedia/Simple-Social-Share/issues",
+  "repository": "https://github.com/MightyMedia/Simple-Social-Share",
+  "dependencies": {
+    "jquery": ">=1.7"
+  }
+}
