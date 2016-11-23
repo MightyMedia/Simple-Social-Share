@@ -4,7 +4,7 @@
 
 Simple Social Share for jQuery is a simple way of creating social share buttons on your website without loading all the third party scripts from these networks. It is based on a blog by Jonathan Suh: [Responsible Social Share Links](https://jonsuh.com/blog/social-share-links/).
 
-Version 0.1.2
+Version 0.2.0
 
 For changelog see: https://github.com/MightyMedia/Simple-Social-Share/blob/master/CHANGELOG.md
 
@@ -38,6 +38,16 @@ Now every element with the class `socialShareBtn` will turn in to a functional s
 
 ```html
 <a href="#" class="socialShareBtn" data-share-url="http://mightymedia.nl" data-share-network="twitter" data-share-text="Share this awesome link on Twitter">Share on Twitter</a>
+```
+
+### Destroy
+
+To completely remove all added Simple Social Share functionality:
+
+```javascript
+$(document).ready(function(){
+    $('.socialShareBtn').simpleSocialShare('destroy');
+});
 ```
 
 ## Options

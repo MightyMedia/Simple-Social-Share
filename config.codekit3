@@ -45,12 +45,12 @@
 		"oAP": "\/demo\/index.html",
 		"oF": 0
 		},
-	"\/demo\/vendor\/jquery-3.1.0.min.js": {
+	"\/demo\/vendor\/jquery-3.1.1.min.js": {
 		"ft": 64,
 		"mi": 1,
-		"oA": 1,
-		"oAP": "\/demo\/vendor\/min\/jquery-3.1.0.min-min.js",
-		"oF": 1,
+		"oA": 0,
+		"oAP": "\/demo\/vendor\/min\/jquery-3.1.1.min-min.js",
+		"oF": 0,
 		"sC": 1,
 		"tS": 0
 		},
