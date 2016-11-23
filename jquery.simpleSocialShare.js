@@ -14,7 +14,7 @@ if (typeof Object.create !== 'function') {
  *
  * Based on a blog by Jonathan Suh: https://jonsuh.com/blog/social-share-links/
  *
- * Version 0.1.2
+ * Version 0.2.0
  * Licensed under the MIT License: https://github.com/MightyMedia/Simple-Social-Share/blob/master/LICENSE
  *
  * Requires:
@@ -210,42 +210,43 @@ if (typeof Object.create !== 'function') {
 	};
 
 	$.fn[pluginName] = function(options) {
-
+		
 		var args = Array.prototype.slice.call(arguments);
 
 		return this.each(function() {
 
 			var pluginInstance = $.data(this, storageName);
-
+			var instanceOptions = {};
+			
 			if (typeof options === 'object' || options === 'init' || !options) {
-
+				
 				if (!pluginInstance) {
 
 					if (options === 'init') {
 
-						options = args[1] || {};
+						instanceOptions = args[1] || {};
 
 					}
 
-					pluginInstance = Object.create(pluginObject).init(options, this);
+					pluginInstance = Object.create(pluginObject).init(instanceOptions, this);
 					$.data(this, storageName, pluginInstance);
 
 				} else {
 
-					$.error('Simple Social Share is already initialized for this object.');
+					$.fn[pluginName].log('Simple Social Share is already initialized for this object.');
 					return;
 
 				}
 			} else if (!pluginInstance) {
 
-				$.error('Simple Social Share is not initialized for this object yet.');
+				$.fn[pluginName].log('Simple Social Share is not initialized for this object yet.');
 				return;
 
 			} else if (pluginInstance[options]) {
-
+				
 				var method = options;
-				options = args.slice(1);
-				pluginInstance[method].apply(pluginInstance, options);
+				instanceOptions = args.slice(1);
+				pluginInstance[method].apply(pluginInstance, instanceOptions);
 
 			} else {
 
@@ -256,6 +257,18 @@ if (typeof Object.create !== 'function') {
 
 		});
 
+	};
+	
+	// default logger
+	$.fn[pluginName].log = function log() {
+		
+		/* global console:true */
+		if (window.console && console.log) {
+			
+			console.log('[social-share] ' + Array.prototype.join.call(arguments, ' ') );
+			
+		}
+		
 	};
 
 /*
