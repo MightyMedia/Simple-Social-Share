@@ -24,9 +24,9 @@
 
 <p><a href="https://travis-ci.org/MightyMedia/Simple-Social-Share"><img src="https://travis-ci.org/MightyMedia/Simple-Social-Share.svg?branch=develop" alt="Build Status"></a></p>
 
-<p>Simple Social Share for jQuery is a simple way of creating social share buttons on your website without loading all the third party scripts from these networks. It is bases on a blog by Jonathan Suh: <a href="https://jonsuh.com/blog/social-share-links/">Responsible Social Share Links</a>.</p>
+<p>Simple Social Share for jQuery is a simple way of creating social share buttons on your website without loading all the third party scripts from these networks. It is based on a blog by Jonathan Suh: <a href="https://jonsuh.com/blog/social-share-links/">Responsible Social Share Links</a>.</p>
 
-<p>Version 0.1.1</p>
+<p>Version 0.2.0</p>
 
 <p>For changelog see: <a href="https://github.com/MightyMedia/Simple-Social-Share/blob/master/CHANGELOG.md">https://github.com/MightyMedia/Simple-Social-Share/blob/master/CHANGELOG.md</a></p>
 
@@ -62,6 +62,15 @@ MIT License - <a href="https://github.com/MightyMedia/Simple-Social-Share/blob/m
 <p>Now every element with the class <code>socialShareBtn</code> will turn in to a functional share link.</p>
 
 <div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">a</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>#<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>socialShareBtn<span class="pl-pds">"</span></span> <span class="pl-e">data-share-url</span>=<span class="pl-s"><span class="pl-pds">"</span>http://mightymedia.nl<span class="pl-pds">"</span></span> <span class="pl-e">data-share-network</span>=<span class="pl-s"><span class="pl-pds">"</span>twitter<span class="pl-pds">"</span></span> <span class="pl-e">data-share-text</span>=<span class="pl-s"><span class="pl-pds">"</span>Share this awesome link on Twitter<span class="pl-pds">"</span></span>&gt;Share on Twitter&lt;/<span class="pl-ent">a</span>&gt;</pre></div>
+
+<h3>
+<a id="destroy" class="anchor" href="#destroy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Destroy</h3>
+
+<p>To completely remove all added Simple Social Share functionality:</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">$</span>(<span class="pl-c1">document</span>).<span class="pl-en">ready</span>(<span class="pl-k">function</span>(){
+    <span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>.socialShareBtn<span class="pl-pds">'</span></span>).<span class="pl-en">simpleSocialShare</span>(<span class="pl-s"><span class="pl-pds">'</span>destroy<span class="pl-pds">'</span></span>);
+});</pre></div>
 
 <h2>
 <a id="options" class="anchor" href="#options" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Options</h2>
@@ -122,6 +131,11 @@ MIT License - <a href="https://github.com/MightyMedia/Simple-Social-Share/blob/m
 </tr>
 </tbody>
 </table>
+
+<h2>
+<a id="issues" class="anchor" href="#issues" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Issues</h2>
+
+<p>If you have any ideas or bugs, please submit them to the GitHub issue tracker at <a href="https://github.com/MightyMedia/Simple-Social-Share/issues">https://github.com/MightyMedia/Simple-Social-Share/issues</a>.</p>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/MightyMedia/Simple-Social-Share">Simple-social-share</a> is maintained by <a href="https://github.com/MightyMedia">MightyMedia</a>.</span>
