@@ -216,7 +216,7 @@ if (typeof Object.create !== 'function') {
 		return this.each(function() {
 
 			var pluginInstance = $.data(this, storageName);
-			var newOptions = {};
+			var instanceOptions = {};
 			
 			if (typeof options === 'object' || options === 'init' || !options) {
 				
@@ -224,11 +224,11 @@ if (typeof Object.create !== 'function') {
 
 					if (options === 'init') {
 
-						newOptions = args[1] || {};
+						instanceOptions = args[1] || {};
 
 					}
 
-					pluginInstance = Object.create(pluginObject).init(newOptions, this);
+					pluginInstance = Object.create(pluginObject).init(instanceOptions, this);
 					$.data(this, storageName, pluginInstance);
 
 				} else {
@@ -245,8 +245,8 @@ if (typeof Object.create !== 'function') {
 			} else if (pluginInstance[options]) {
 				
 				var method = options;
-				newOptions = args.slice(1);
-				pluginInstance[method].apply(pluginInstance, newOptions);
+				instanceOptions = args.slice(1);
+				pluginInstance[method].apply(pluginInstance, instanceOptions);
 
 			} else {
 
@@ -262,7 +262,7 @@ if (typeof Object.create !== 'function') {
 	// default logger
 	$.fn[pluginName].log = function log() {
 		
-		/*global console:true */
+		/* global console:true */
 		if (window.console && console.log) {
 			
 			console.log('[social-share] ' + Array.prototype.join.call(arguments, ' ') );
