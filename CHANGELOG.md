@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+* Added destroy option
+* Added logging in stead of trowing an error when it makes more sense
+* Updated from codekit 2 to 3 for compiling
+
 ## 0.1.2 / 2016-08-30
 
 * Updated documentation
