@@ -1,6 +1,7 @@
 // Utility for creating objects in older browsers
 if (typeof Object.create !== 'function') {
 	Object.create = function(obj) {
+    	"use strict";
 		function F() {}
 		F.prototype = obj;
 		return new F();
@@ -26,6 +27,7 @@ if (typeof Object.create !== 'function') {
  *
  */
 (function($, window, document, undefined) {
+    "use strict";
 
 	var pluginName = 'simpleSocialShare';
 	var storageName = 'plugin_' + pluginName;
@@ -210,16 +212,16 @@ if (typeof Object.create !== 'function') {
 	};
 
 	$.fn[pluginName] = function(options) {
-		
+
 		var args = Array.prototype.slice.call(arguments);
 
 		return this.each(function() {
 
 			var pluginInstance = $.data(this, storageName);
 			var instanceOptions = {};
-			
+
 			if (typeof options === 'object' || options === 'init' || !options) {
-				
+
 				if (!pluginInstance) {
 
 					if (options === 'init') {
@@ -243,7 +245,7 @@ if (typeof Object.create !== 'function') {
 				return;
 
 			} else if (pluginInstance[options]) {
-				
+
 				var method = options;
 				instanceOptions = args.slice(1);
 				pluginInstance[method].apply(pluginInstance, instanceOptions);
@@ -258,17 +260,17 @@ if (typeof Object.create !== 'function') {
 		});
 
 	};
-	
+
 	// default logger
 	$.fn[pluginName].log = function log() {
-		
+
 		/* global console:true */
 		if (window.console && console.log) {
-			
+
 			console.log('[social-share] ' + Array.prototype.join.call(arguments, ' ') );
-			
+
 		}
-		
+
 	};
 
 /*

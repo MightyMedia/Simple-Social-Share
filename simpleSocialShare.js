@@ -1,6 +1,9 @@
+/* exported simpleSocialShare */
+
 // Utility for creating objects in older browsers
 if (typeof Object.create !== 'function') {
 	Object.create = function(obj) {
+    	"use strict";
 		function F() {}
 		F.prototype = obj;
 		return new F();
@@ -67,7 +70,7 @@ window.off = Element.prototype.off = eventsNamespaceBinder.off;
  *
  */
 
-var simpleSocialShare = (function(options){
+var simpleSocialShare = (function(){
     "use strict";
 
     var pluginName = 'simpleSocialShare';
@@ -229,7 +232,7 @@ var simpleSocialShare = (function(options){
         },
 
         init: function(options,element) {
-            self = this;
+            var self = this;
 
             // Initialise options
             self.options = tools.extend(settings, options || {});
@@ -266,7 +269,6 @@ var simpleSocialShare = (function(options){
 
     var destroyOnDomObject = function(object) {
         var pluginInstance = object[storageName];
-        var instanceOptions = {};
 
         if (!pluginInstance) {
             tools.log('Simple Social Share is not initialized for this object yet.');
@@ -284,10 +286,12 @@ var simpleSocialShare = (function(options){
         if (null === action || action !== 'destroy') {
             action = 'enable';
         }
+        var selector = '';
+        var elements = {};
 
-        if (input.indexOf('#') == 0) {
+        if (input.indexOf('#') === 0) {
             // Get element by ID
-            var selector = input.substr(1);
+            selector = input.substr(1);
             var element = document.getElementById(selector);
 
             if (null !== element) {
@@ -300,10 +304,10 @@ var simpleSocialShare = (function(options){
                 tools.log('No element with ID \'' + selector + '\' found.');
             }
 
-        } else if (input.indexOf('.') == 0) {
+        } else if (input.indexOf('.') === 0) {
             // Get element by class name (or use query selector)
-            var selector = input.substr(1);
-            var elements = document.getElementsByClassName(selector);
+            selector = input.substr(1);
+            elements = document.getElementsByClassName(selector);
 
             if (null !== elements && elements.length > 0) {
                 for (var i = 0; i < elements.length; i++) {
@@ -319,14 +323,14 @@ var simpleSocialShare = (function(options){
 
         } else if (input.length > 0) {
             // Get element by tag name (or use query selector)
-            var elements = document.getElementsByTagName(input);
+            elements = document.getElementsByTagName(input);
 
             if (null !== elements && elements.length > 0) {
-                for (var i = 0; i < elements.length; i++) {
+                for (var j = 0; j < elements.length; j++) {
                     if (action === 'destroy') {
-                        destroyOnDomObject(elements[i]);
+                        destroyOnDomObject(elements[j]);
                     } else {
-                        enableOnDomObject(elements[i]);
+                        enableOnDomObject(elements[j]);
                     }
                 }
             } else {
@@ -366,7 +370,7 @@ var simpleSocialShare = (function(options){
         } else {
             tools.log('simpleSocialShare.destroy() needs input [1]');
         }
-    }
+    };
 
     var init = function(options) {
         //var args = Array.prototype.slice.call(arguments);

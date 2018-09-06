@@ -1,8 +1,9 @@
 # Changelog
 
-## 0.3.0 / unreleased
+## 0.3.0 / 2018-09-06
 
 * Added non-jQuery version
+* Added gulp for building and compiling
 
 ## 0.2.0 / 2016-11-23
 
