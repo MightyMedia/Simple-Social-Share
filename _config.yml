@@ -1,0 +1,8 @@
+title: Simple-social-share
+description: Simple Social Share for jQuery is a simple way of creating social share buttons on your website.
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-cayman
+
+gems:
+  - jekyll-mentions
