@@ -1,6 +1,10 @@
 # Changelog
 
-## 2.2.0 / 2016-11-23
+## 0.3.0 / unreleased
+
+* Added non-jQuery version
+
+## 0.2.0 / 2016-11-23
 
 * Added destroy option
 * Added logging instead of trowing an error when it makes more sense
