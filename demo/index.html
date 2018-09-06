@@ -4,20 +4,20 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
-	
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Simple Social Share for jQuery - demo</title>
     <meta name="description" content="jQuery Mighty Form Styler demo">
-    
+
 </head>
 
 <body>
 
 
-<a class="share-button" data-share-url="http://mightymedia.nl" data-share-network="twitter" data-share-text="Share this awesome link on Twitter" data-share-title="Twitter Share" data-share-via="" data-share-tags="" data-share-media="" href="#">Share on Twitter</a><br>
+<a id="testShareButton" class="share-button simpleSocialShare" data-share-url="http://mightymedia.nl" data-share-network="twitter" data-share-text="Share this awesome link on Twitter" data-share-title="Twitter Share" data-share-via="" data-share-tags="" data-share-media="" href="#">Share on Twitter</a><br>
 
-<a class="share-button" data-share-url="http://mightymedia.nl" data-share-network="facebook" data-share-text="Share this awesome link on Facebook" data-share-title="Facebook Share" data-share-via="" data-share-tags="" data-share-media="" href="#">Share on Facebook</a><br>
+<a class="share-button" data-share-url="http://mightymedia.nl" data-share-network="facebook" data-share-text="Share this awesome link on Facebook" data-share-title="Facebook Share" href="#">Share on Facebook</a><br>
 
 <a class="share-button" data-share-url="http://mightymedia.nl" data-share-network="linkedin" data-share-text="Share this awesome link on LinkedIn" data-share-title="LinkedIn Share" data-share-via="" data-share-tags="" data-share-media="" href="#">Share on LinkedIn</a><br>
 
@@ -29,16 +29,27 @@
 
 
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
-<script src="vendor/jquery-3.1.1.min.js"></script>
-<script src="../jquery.simpleSocialShare.min.js"></script>
+<!-- <script src="vendor/jquery-3.1.1.min.js"></script> -->
+<!-- <script src="../jquery.simpleSocialShare.js"></script> -->
+<script src="../simpleSocialShare.js"></script>
 
 <script type="text/javascript">
 
-	$(document).ready(function(){
+    // Plain javascript examples
+    var shareButtons = document.getElementsByClassName('share-button');
+    simpleSocialShare.init(shareButtons);
 
+    var buttonWithId = document.getElementById('testShareButton');
+    //simpleSocialShare.destroy(buttonWithId);
+
+/*
+    // jQuery example
+	$(document).ready(function(){
+        console.log('jQuery stuff!');
 		$('.share-button').simpleSocialShare();
 
 	});
+*/
 
 </script>
 
