@@ -15,11 +15,11 @@
         "url": "http://mightymedia.nl/"
     },
     "maintainers": [
-    {
-        "name": "Bas van den Wijngaard",
-        "email": "bas@mightymedia.nl",
-        "url": "http://mightymedia.nl/"
-    }
+        {
+            "name": "Bas van den Wijngaard",
+            "email": "bas@mightymedia.nl",
+            "url": "http://mightymedia.nl/"
+        }
     ],
     "license": [
         {
@@ -31,13 +31,16 @@
     "bugs": "https://github.com/MightyMedia/Simple-Social-Share/issues",
     "repository": "https://github.com/MightyMedia/Simple-Social-Share",
     "devDependencies": {
-        "gulp": "^3.9.1",
+        "gulp": "^4.0.2",
+        "gulp-autoprefixer": "^7.0.1",
         "gulp-concat": "^2.6.1",
-        "gulp-copy": "^1.1.0",
+        "gulp-copy": "^4.0.1",
         "gulp-jshint": "^2.1.0",
-        "gulp-rename": "^1.3.0",
-        "gulp-uglify": "^3.0.0",
-        "jshint": "^2.9.5",
+        "gulp-rename": "^1.4.0",
+        "gulp-sass": "^4.1.0",
+        "gulp-sourcemaps": "^2.6.5",
+        "gulp-uglify": "^3.0.2",
+        "jshint": "^2.12.0",
         "jshint-stylish": "^2.2.1",
         "stream-combiner2": "^1.1.1"
     }

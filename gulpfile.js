@@ -9,11 +9,11 @@ var gulp = require('gulp'),
 const paths = {
 	plain: {
 		src: 'simpleSocialShare.js',
-		dest: ''
+		dest: './'
 	},
 	jquery: {
 		src: 'jquery.simpleSocialShare.js',
-		dest: ''
+		dest: './'
     }
 }
 
@@ -100,8 +100,8 @@ function errorAlert(err) {
 
 // Watch Files For Changes
 gulp.task('watch', function() {
-    gulp.watch(paths.plain.src, ['compilePlain']);
-    gulp.watch(paths.jquery.src, ['compileJquery']);
+    gulp.watch(paths.plain.src, gulp.series('compilePlain'));
+    gulp.watch(paths.jquery.src, gulp.series('compileJquery'));
 });
 
-gulp.task('default', ['compilePlain', 'compileJquery']);
+gulp.task('default', gulp.series('compilePlain', 'compileJquery'));
