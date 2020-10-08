@@ -21,6 +21,13 @@
             "url": "http://mightymedia.nl/"
         }
     ],
+    "contributors": [
+        {
+            "name": "Harro Heijboer",
+            "email": "harro@tabs-spaces.nl",
+            "url": "https://tabs-spaces.nl/"
+        }
+    ],
     "license": [
         {
             "type": "MIT",

@@ -140,7 +140,12 @@ var simpleSocialShare = (function(){
                 self.openSocialSharePopup(self);
             });
 		},
-		
+
+		/*
+		 * Get correct setting for element
+		 * 
+		 * If setting is undefined if will be overwritten by the general settings 
+         */
 		getSetting: function( value, setting ) {
 			
 			if ( settings[setting] !== value && typeof value !== 'undefined' ) {
@@ -166,6 +171,7 @@ var simpleSocialShare = (function(){
             var shareTags		= self.element.dataset.shareTags;
 			var shareMedia		= self.element.dataset.shareMedia;
 			
+			// check if before and after are set in the general settings
 			var shareBefore		= self.getSetting( self.element.dataset.shareBefore, 'before' );
 			var shareAfter		= self.getSetting( self.element.dataset.shareAfter, 'after' );
 			
@@ -179,6 +185,7 @@ var simpleSocialShare = (function(){
 
             if (doShare === true) {
 				
+				// do before callback
 				if ( null !== shareBefore ) { window[ shareBefore ]( self ) };
 
                 switch(shareNetwork) {
@@ -246,12 +253,11 @@ var simpleSocialShare = (function(){
                     default:
                         return false;
                 }
-            }
-
-            if (doShare) {
+            
                 // Calculate the position of the popup so it’s centered on the screen.
                 self.popupwindow(networkShareUrl, '', 500, 300);
-			
+				
+				// do after callback
 				if ( null !== shareAfter ) { window[ shareAfter ]( self ) };
 
 			}
