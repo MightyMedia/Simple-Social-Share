@@ -76,7 +76,9 @@ var simpleSocialShare = (function(){
     var pluginName = 'simpleSocialShare';
     var storageName = 'plugin_' + pluginName;
     var settings = {
-        selector: '.simpleSocialShare'
+		selector: '.simpleSocialShare',
+		before: null,
+		after: null
     };
 
     var tools = {
@@ -137,19 +139,44 @@ var simpleSocialShare = (function(){
                 e.preventDefault();
                 self.openSocialSharePopup(self);
             });
-        },
+		},
 
-        openSocialSharePopup: function(self) {
-            var doShare 		= false;
+		/*
+		 * Get correct setting for element
+		 * 
+		 * If setting is undefined if will be overwritten by the general settings 
+         */
+		getSetting: function( value, setting ) {
+			
+			if ( settings[setting] !== value && typeof value !== 'undefined' ) {
+
+				return value;
+
+			} else {
+
+				return settings[setting];
+
+			}
+
+		},
+
+        openSocialSharePopup: function(self) {	
+			
+			var doShare 		= false;
             var shareUrl		= self.element.dataset.shareUrl;
             var shareNetwork	= self.element.dataset.shareNetwork;
             var shareText		= self.element.dataset.shareText;
             var shareTitle		= self.element.dataset.shareTitle;
             var shareVia		= self.element.dataset.shareVia;
             var shareTags		= self.element.dataset.shareTags;
-            var shareMedia		= self.element.dataset.shareMedia;
+			var shareMedia		= self.element.dataset.shareMedia;
+			
+			// check if before and after are set in the general settings
+			var shareBefore		= self.getSetting( self.element.dataset.shareBefore, 'before' );
+			var shareAfter		= self.getSetting( self.element.dataset.shareAfter, 'after' );
+			
             var networkShareUrl	= '';
-
+			
             // Check if shareUrl and shareNetwork are present and shareNetwork is in the list of allowed networks
             if (typeof shareUrl !== 'undefined' && typeof shareNetwork !== 'undefined' && self.allowedNetworks.indexOf(shareNetwork) > -1) {
                 // At this point we don't automaticly fetch the current URL from the browser
@@ -157,6 +184,9 @@ var simpleSocialShare = (function(){
             }
 
             if (doShare === true) {
+				
+				// do before callback
+				if ( null !== shareBefore ) { window[ shareBefore ]( self ) };
 
                 switch(shareNetwork) {
                     case 'facebook':
@@ -223,12 +253,15 @@ var simpleSocialShare = (function(){
                     default:
                         return false;
                 }
-            }
-
-            if (doShare) {
+            
                 // Calculate the position of the popup so it’s centered on the screen.
                 self.popupwindow(networkShareUrl, '', 500, 300);
-            }
+				
+				// do after callback
+				if ( null !== shareAfter ) { window[ shareAfter ]( self ) };
+
+			}
+
         },
 
         init: function(options,element) {
@@ -339,7 +372,26 @@ var simpleSocialShare = (function(){
         } else {
             tools.log('Empty selector [' + action + ']');
         }
-    };
+	};
+	
+	var updateSettings = function( selector, options ) {
+
+		Object.keys( options ).map(function( optionKey, index ) {
+			var value = options[optionKey];
+
+			if(typeof settings[optionKey] !== 'undefined') {
+
+				settings[optionKey] = options[optionKey]
+
+			} else {
+
+				tools.log( optionKey + ' is not a valid option');
+
+			}
+ 
+		});
+
+	}
 
     var destroy = function() {
         var args = Array.prototype.slice.call(arguments);
@@ -372,15 +424,20 @@ var simpleSocialShare = (function(){
         }
     };
 
-    var init = function(options) {
-        //var args = Array.prototype.slice.call(arguments);
-
-        if (typeof options === 'object') {
+    var init = function( selector, options ) {
+		
+		if (null === options || options === '') {
+			options = {};
+        }
+		
+		updateSettings( selector, options );
+		
+        if (typeof selector === 'object') {
             // Check if it's a NodeList or a HTMLCollection (list of elements)
-            if (options instanceof HTMLCollection || options instanceof NodeList) {
+            if (selector instanceof HTMLCollection || selector instanceof NodeList) {
                 // Multiple elements, loop them
-                for (var i = 0; i < options.length; i++) {
-                    enableOnDomObject(options[i]);
+                for (var i = 0; i < selector.length; i++) {
+                    enableOnDomObject(selector[i]);
                 }
             } /*else if (tools.getType(options) === 'Object') {
                 // We don't have any options yet
@@ -392,11 +449,11 @@ var simpleSocialShare = (function(){
                 //socialShare.init(options);
             }*/ else {
                 // Probably 1 dom object
-                enableOnDomObject(options);
+                enableOnDomObject(selector);
             }
-        } else if (typeof options === 'string') {
+        } else if (typeof selector === 'string') {
             // Enable by selector input
-            actionBySelector(options, 'enable');
+            actionBySelector(selector, 'enable');
 
         } else {
             // Use default classname selector

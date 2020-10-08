@@ -57,6 +57,35 @@ Now every element with the class `socialShareBtn` will turn in to a functional s
 <a href="#" class="socialShareBtn" data-share-url="http://mightymedia.nl" data-share-network="twitter" data-share-text="Share this awesome link on Twitter">Share on Twitter</a>
 ```
 
+### Initialize with Options
+
+There are several basic options you can pass along during the initialization. They can be overwritten by individual data attriutes per network.
+
+__Plain javascript__
+```javascript
+// Initialization with before and after callback
+simpleSocialShare.init( '.socialShareBtn', {
+
+	before	: 'callbackFunctionBefore',
+	after	: 'callbackFunctionAfter'
+
+} );
+```
+
+__Overwrite or set individually by data attribute__
+```html
+<a href="#" class="socialShareBtn" data-share-url="http://mightymedia.nl" data-share-network="twitter" data-share-text="Share this awesome link on Twitter" data-share-before="callbackFunctionBefore" data-share-after="callbackFunctionAfter">Share on Twitter</a>
+```
+## Initialize Options
+
+The options you can pass along during initialization:
+
+| Option        | Description                                                               | Notes    |
+| ------------- | ------------------------------------------------------------------------- | -------- |
+| before        | Callback function to call before the popup opens                          | optional |
+| after         | Callback function to call after the popup opened                          | optional |
+
+
 ### Destroy
 
 To completely remove all added Simple Social Share functionality:
@@ -74,10 +103,9 @@ $(document).ready(function(){
 });
 ```
 
-## Options
+## Data Attributes Options
 
 The options for a share link/button are set via data attributes on the element. Below is a list with the options.
-
 
 | Option        | Description                                | Network                      | Notes    |
 | ------------- | ------------------------------------------ | ---------------------------- | -------- |
@@ -88,6 +116,8 @@ The options for a share link/button are set via data attributes on the element. 
 | share-via     | Account name to mention in the share/tweet | twitter only                 | optional |
 | share-tags    | Tags to include to the share               | pinterest, twitter           | optional |
 | share-media   | Image to add to the share                  | pinterest only               | optional |
+| share-before  | Callback function before the popup opens   | all networks                 | optional |
+| share-after   | Callback function after the popup opened   | all networks                 | optional |
 
 
 ## Issues
