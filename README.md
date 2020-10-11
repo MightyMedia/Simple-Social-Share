@@ -59,7 +59,7 @@ Now every element with the class `socialShareBtn` will turn in to a functional s
 
 ### Initialize with Options
 
-There are several basic options you can pass along during the initialization. They can be overwritten by individual data attriutes per network.
+There are several basic options you can pass along during the initialization. They can be overwritten by individual data attributes per network.
 
 __Plain javascript__
 ```javascript
