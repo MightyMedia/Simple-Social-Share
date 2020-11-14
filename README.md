@@ -2,7 +2,7 @@
 
 Simple Social Share is a simple way of creating social share buttons on your website without loading all the third party scripts from these networks. It is available in plain javascript and as jQuery plugin. It is based on a blog by Jonathan Suh: [Responsible Social Share Links](https://jonsuh.com/blog/social-share-links/).
 
-Version 0.3.0
+Version 0.4.0
 
 For changelog see: https://github.com/MightyMedia/Simple-Social-Share/blob/master/CHANGELOG.md
 

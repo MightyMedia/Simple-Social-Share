@@ -374,16 +374,20 @@ var simpleSocialShare = (function(){
 
     var updateSettings = function( selector, options ) {
 
-        Object.keys( options ).map(function( optionKey /*, index*/ ) {
-            //var value = options[optionKey];
-            
-            if(typeof settings[optionKey] !== 'undefined') {
-                settings[optionKey] = options[optionKey];
-            } else {
-                tools.log( optionKey + ' is not a valid option');
-            }
-        
-        });
+		if ( typeof options !== 'undefined' && options !== null ) {
+
+			Object.keys( options ).map(function( optionKey /*, index*/ ) {
+				//var value = options[optionKey];
+				
+				if(typeof settings[optionKey] !== 'undefined') {
+					settings[optionKey] = options[optionKey];
+				} else {
+					tools.log( optionKey + ' is not a valid option');
+				}
+			
+			});
+
+		}
 
     };
 
